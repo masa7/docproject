@@ -1,0 +1,19 @@
+<!-- Baseテンプレートを適用 -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定 -->
+{% block title %}Log out{% endblock %}
+    {% block contents %}
+    <!-- Bootstrapのグリッドシステム -->
+    <div class = "containter">
+        <!-- 行を配置 -->
+        <div class = "row">
+            <!-- 列の左右にoffset-4、列の上下パディングにpy-4 -->
+            <div class = "col offset-4 py-4">
+                <h3>ログアウトしました</h3>
+                <!-- トップページへのリンクテキスト -->
+                <P><a href="{% url 'doc:index' %}">トップページへ</a></P>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    

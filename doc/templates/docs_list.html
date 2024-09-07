@@ -1,0 +1,49 @@
+
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <!-- レコードが格納されたobject_listからレコードを1行ずつrecordに取り出す-->
+        {% for record in object_list %}
+        <!-- 列要素を配置 -->
+        <div class="col">
+          <div class="card shadow-sm">
+            <!-- svgタグをimgに変更src属性を追加して1枚目のイメージのURLを設定 -->
+            <img src="{{ record.image1.url }}"
+              class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"/>
+              <!-- <text>～</text>を削除-->
+            </img>
+            <!-- タイトルとボタンを出力するブロック -->
+            <div class="card-body">
+              <!-- titleフィールドを出力 -->
+              <p class="card-text">{{ record.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!-- 詳細ページを表示するボタン -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                    onclick="location.href='{% url 'doc:doc_detail' record.pk %}'">
+                    詳細情報
+                  </button>
+                  <!-- カテゴリを表示するボタン -->
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                    onclick="location.href='{% url 'doc:docs_cat' category=record.category.id %}'">
+                    {{record.category.title}}
+                  </button>
+                </div>
+                <!-- 登録したユーザー名を出力-->
+                <a href="{% url 'doc:user_list' user=record.user.id %}">
+                  <small class="text-body-secondary">{{ record.user.username }}</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 列要素ここまで -->
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+

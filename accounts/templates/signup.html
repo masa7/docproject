@@ -1,0 +1,48 @@
+<!-- user base template -->
+{% extends 'base.html' %}
+<!-- set page title in header section -->
+    {% block title %}Sign up{% endblock %}
+        {% block contents %}
+        <!-- Grid system by Bootstrap -->
+        <hr>
+        <div class = "containter">
+            <!-- setup row-->
+            <div class = "row">
+                <!-- put offset-2 blank in both left and right -->
+                <div class = "col offset-2">
+                    <h3>サインアップ</h3>
+                    <!-- set form for sign up-->
+                    <form method = "post">
+                        {% csrf_token %}
+                        <!-- retrieve fields from form-->
+                        {% for field in form %}
+                        <p>
+                            <!-- retrieve label -->
+                            {{field.label_tag}}<br>
+                            <!-- retrieve input tag -->
+                            {{field}}
+                            <!-- retrieve help_text -->
+                            {% if field.help_text %}
+                            <small style = "color:grey">{{field.help_text}}</small>
+                            {% endif %}
+                            <!-- retrieve error message if error occurs -->
+                            {% for error in field.errors %}
+                                <p style="color:red">{{error}}</p>
+                            {% endfor %}
+                        </p>
+                        {% endfor %}
+                        <P style="color:red">
+                            メールアドレスはパスワードをリセットする際に必要になるので登録してください
+                        </P>
+                        <!-- button for sign up -->
+                        <input type="submit" value="Sing up">
+                    </form>
+                    <!-- link text in top page-->
+                    <br>
+                    <p>
+                        <a href="{% url 'doc:index' %}">登録をやめてトップページに戻る</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,19 @@
+<!-- user base template-->
+{% extends 'base.html' %}
+<!-- set page title in header section -->
+{% block title %}Registration Complete{% endblock %}
+    {% block contents %}
+    <!-- Grid system by Bootstrap -->
+    <div class = "containter">
+        <!-- setup row-->
+        <div class = "row">
+            <!-- put offset-4 blank in left/right, py-4 padding in top/bottom -->
+            <div class = "col offset-4 py-4">
+                <h3>登録が完了しました</h3>
+                <!-- text link to login page -->
+                <P><a href="{% url 'accounts:login' %}">ログインはこちら</a></P>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    

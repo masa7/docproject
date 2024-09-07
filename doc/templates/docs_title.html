@@ -1,0 +1,27 @@
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <!-- title and desc -->
+        <h1 class="fw-light">Fund Doc Storage</h1>
+        <p class="lead text-body-secondary">ファンド関連書類の効率的管理</p>
+        <p>
+          <!-- navigation button -->
+          {% if user.is_authenticated %}
+          <!-- ログイン中のボタン -->
+          <a href="{% url 'doc:post' %}" class="btn btn-primary my-2">ファイルアップロード</a>
+          <!-- <a href="{% url 'accounts:logout' %}" class="btn btn-secondary my-2">ログアウト</a> -->
+          <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-secondary my-2">ログアウト</button>
+          </form>
+          {% else %}
+          <!-- ログアウト中のボタン -->
+          <a href="{% url 'accounts:signup' %}" class="btn btn-primary my-2">未登録の方->サインアップ</a>
+          <a href="{% url 'accounts:login' %}" class="btn btn-secondary my-2">登録済みの方->ログイン</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </section>
+

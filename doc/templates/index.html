@@ -1,0 +1,16 @@
+<!-- apply base template -->
+{% extends 'base.html' %}
+<!-- set page title in header -->
+{% block title %}Fund Doc Storage{% endblock %}
+    {% block contents %}
+    
+        <!-- load template for title-->
+        {% include "docs_title.html" %}
+
+        <!-- load template for list -->
+        {% include "docs_list.html" %}
+
+        <!-- load template for pagination -->
+        {% include "pagination.html" %}
+
+    {% endblock %}
